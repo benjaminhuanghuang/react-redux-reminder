@@ -15,7 +15,7 @@ class App extends Component {
     }
   }
 
-  onChange = (event) => {
+  changeState = (event) => {
     this.setState({
       text: event.target.value
     });
@@ -23,6 +23,24 @@ class App extends Component {
 
   addReminder = () => {
     console.log("this", this);
+    this.props.addReminder(this.state.text);
+  }
+
+  renderReminders(){
+    const { reminders } = this.props;
+    return (
+      <ul className="list-group col-sm-4">
+        {
+          reminders.map(reminder => {
+            return (  
+              <li key={reminder.id} className="list-group-item">
+                <div>{reminder.text}</div>
+              </li>
+            )
+          })
+        }
+      </ul>
+    )
   }
 
   render (){
@@ -33,17 +51,24 @@ class App extends Component {
         </div>
         <div className="form-inline">
           <div className="form-group">
-            <input className="from-control" placeholder="I have to..." onChange={this.onChange}/>
+            <input className="from-control" placeholder="I have to..." onChange={this.changeState}/>
           </div>
           <button type="button" className="btn btn-success" onClick={this.addReminder}>Add Reminder</button>
         </div>
+        {this.renderReminders()}
       </div>
     ) 
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ addReminder }, dispatch);
-}
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({ addReminder }, dispatch);
+// }
 
-export default connect(null, mapDispatchToProps)(App);
+function mapStateToProps(state){
+  return {
+    reminders: state
+  }
+}
+// export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(mapStateToProps, {addReminder})(App);

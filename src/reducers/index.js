@@ -7,14 +7,14 @@ const reminder = (action)=>
     id: Math.random()
   }
 }
-
+// return a new state
 const reminders = (state=[], action)=>{
-  let reminder = null;
+  let reminders = null;
 
   switch(action.type)
   {
     case ADD_REMINDER:
-      reminder = [...state, reminder(action)];
+      reminders = [...state, reminder(action)];
       console.log("reminders as state", reminders);
       return reminders;
 

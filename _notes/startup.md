@@ -7,3 +7,5 @@ npm start
 
 using bootstrap 
   https://react-bootstrap.github.io/getting-started.html
+  put bootstrip css into index
+  
