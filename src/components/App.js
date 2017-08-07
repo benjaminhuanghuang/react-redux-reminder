@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+// import { bindActionCreators } from 'redux';
 
 //
 import { addReminder } from '../actions';
@@ -49,9 +48,9 @@ class App extends Component {
         <div className="title">
           Reminder
         </div>
-        <div className="form-inline">
+        <div className="form-inline reminder-form">
           <div className="form-group">
-            <input className="from-control" placeholder="I have to..." onChange={this.changeState}/>
+            <input className="form-control" placeholder="I have to..." onChange={this.changeState}/>
           </div>
           <button type="button" className="btn btn-success" onClick={this.addReminder}>Add Reminder</button>
         </div>
