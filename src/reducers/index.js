@@ -6,6 +6,7 @@ import {
 const reminder = (action) => {
   return {
     text: action.text,
+    dueDate: action.dueDate,
     id: Math.random()
   }
 }
@@ -28,7 +29,7 @@ const reminders = (state = [], action) => {
     case DELETE_REMINDER:
       reminders = removeById(state, action.id);
       return reminders;
-      
+
     default:
       return state;
   }
